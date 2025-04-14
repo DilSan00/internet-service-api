@@ -8,7 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     AuthModule,
     UsersModule,
     MongooseModule.forRoot(
-      'mongodb://localhost:27017/internet-service-api?authMechanism=DEFAULT',
+      'mongodb+srv://norms777666:<smodsmod>@cluster0.yvcttep.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
     ),
   ],
 })
