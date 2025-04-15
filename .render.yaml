@@ -1,0 +1,10 @@
+nodeservices:
+  - type: web
+    name: internet-service-api
+    buildCommand: 'npm install && npm run build'
+    startCommand: 'npm run start:prod'
+    env:
+      NODE_ENV: production
+    envVars:
+      - key: NODE_VERSION
+        value: '20'
