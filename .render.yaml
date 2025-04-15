@@ -1,4 +1,4 @@
-nodeservices:
+services:
   - type: web
     name: internet-service-api
     buildCommand: 'npm install && npm run build'
@@ -8,3 +8,5 @@ nodeservices:
     envVars:
       - key: NODE_VERSION
         value: '20'
+    build:
+      dockerfilePath: Dockerfile
