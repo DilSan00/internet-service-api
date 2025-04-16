@@ -11,7 +11,7 @@ import { InternetsModule } from './internets/internets.module';
     InternetsModule,
     MongooseModule.forRoot(
       process.env.MONGO_URI ||
-        'mongodb://localhost:27017/?authMechanism=DEFAULT',
+        'mongodb+srv://norms777666:smodsmod@cluster0.yvcttep.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
     ),
   ],
 })
