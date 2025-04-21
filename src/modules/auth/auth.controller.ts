@@ -1,24 +1,18 @@
 import { AuthService } from './auth.service';
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  UseGuards,
-  Request,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { UsersService } from '../users/users.service';
+import { CurrentUser } from 'src/shared/decorators/current-user.decorator';
 
 @ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(
     private authService: AuthService,
-    private usersService: UsersService,
+    private usersService: UsersService
   ) {}
 
   @Post('register')
@@ -38,7 +32,7 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('me')
   @ApiBearerAuth()
-  async getMe(@Request() req) {
-    return this.usersService.findById(req.user.userId);
+  async getMe(@CurrentUser() user) {
+    return this.usersService.findById(user.userId);
   }
 }
