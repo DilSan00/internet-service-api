@@ -22,4 +22,21 @@ export class InternetsService {
   async findById(id: string): Promise<InternetDocument | null> {
     return this.internetModel.findById(id).exec();
   }
+
+  async findTop(limit: number): Promise<(Internet & { score: number })[]> {
+    const internets = await this.internetModel.find().exec();
+
+    const scored = internets.map((internet) => {
+      const { speed, latency, price } = internet;
+
+      const score = speed / price - latency * 0.1;
+
+      return {
+        ...internet.toObject(),
+        score: parseFloat(score.toFixed(2)),
+      };
+    });
+
+    return scored.sort((a, b) => b.score - a.score).slice(0, limit);
+  }
 }
