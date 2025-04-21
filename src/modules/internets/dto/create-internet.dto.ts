@@ -1,28 +1,31 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
 
 export class CreateInternetDto {
   @ApiProperty()
   @IsNotEmpty()
+  @IsString()
   providerName: string;
 
   @ApiProperty()
   @IsNotEmpty()
+  @IsString()
   type: string;
 
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNumber()
   speed: number;
 
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNumber()
   latency: number;
 
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNumber()
+  @Min(1)
   price: number;
 
   @ApiProperty()
-  @IsNotEmpty()
+  @IsString()
   description: string;
 }

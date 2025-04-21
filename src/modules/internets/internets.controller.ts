@@ -18,14 +18,9 @@ export class InternetsController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Получить тариф по ID' })
-  @ApiResponse({ status: 200, description: 'Список тарифов', type: InternetResponseDto })
+  @ApiResponse({ status: 200, description: 'Один тариф', type: InternetResponseDto })
   async getById(@Param('id') id: string) {
     return this.internetsService.findById(id);
-  }
-
-  @Get('tops')
-  async getTopInternets(@Query('limit') limit = 4) {
-    return this.internetsService.findTop(Number(limit));
   }
 
   @Post()
