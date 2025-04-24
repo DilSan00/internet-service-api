@@ -1,11 +1,22 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
+import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true, // Убирает свойства, которые не описаны в DTO
+      forbidNonWhitelisted: true, // Генерирует ошибку, если передан неизвестный параметр
+      transform: true, // Преобразует данные в типы, как указано в DTO (например, строку в число)
+      exceptionFactory: (errors) => {
+        // Форматируем ошибки в читаемый массив
+        return new BadRequestException(errors);
+      },
+    })
+  );
 
   const config = new DocumentBuilder()
     .setTitle('Internet Service API')
