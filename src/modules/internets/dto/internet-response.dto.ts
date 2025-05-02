@@ -1,6 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class InternetResponseDto {
+  @ApiProperty({ example: '661f3a293abc1e23b6789012' })
+  _id: string;
+
   @ApiProperty({ example: 'Aknet' })
   providerName: string;
 
