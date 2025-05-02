@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import { IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
 
 export class CreateInternetDto {
@@ -13,16 +14,19 @@ export class CreateInternetDto {
   type: string;
 
   @ApiProperty()
+  @Type(() => Number)
   @IsNotEmpty({ message: 'Скорость подключения обязательна.' })
   @IsNumber({}, { message: 'Скорость подключения должна быть числом.' })
   speed: number;
 
   @ApiProperty()
+  @Type(() => Number)
   @IsNotEmpty({ message: 'Задержка обязательна.' })
   @IsNumber({}, { message: 'Задержка должна быть числом.' })
   latency: number;
 
   @ApiProperty()
+  @Type(() => Number)
   @IsNotEmpty({ message: 'Цена обязательна.' })
   @IsNumber({}, { message: 'Цена должна быть числом.' })
   @Min(1, { message: 'Цена должна быть не менее 1.' })

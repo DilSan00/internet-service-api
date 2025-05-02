@@ -8,9 +8,9 @@ async function bootstrap() {
 
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true, // Убирает свойства, которые не описаны в DTO
-      forbidNonWhitelisted: true, // Генерирует ошибку, если передан неизвестный параметр
-      transform: true, // Преобразует данные в типы, как указано в DTO (например, строку в число)
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
       exceptionFactory: (errors) => {
         // Форматируем ошибки в читаемый массив
         return new BadRequestException(errors);
