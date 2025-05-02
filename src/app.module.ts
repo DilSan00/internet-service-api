@@ -3,15 +3,17 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './modules/auth/auth.module';
 import { InternetsModule } from './modules/internets/internets.module';
 import { UsersModule } from './modules/users/users.module';
+import { ApplicationsModule } from './modules/applications/applications.module';
 
 @Module({
   imports: [
     AuthModule,
     UsersModule,
     InternetsModule,
+    ApplicationsModule,
     MongooseModule.forRoot(
       process.env.MONGO_URI ||
-        'mongodb+srv://norms777666:smodsmod@cluster0.yvcttep.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+        'mongodb+srv://norms777666:smodsmod@cluster0.yvcttep.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
     ),
   ],
 })

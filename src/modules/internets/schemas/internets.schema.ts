@@ -17,7 +17,7 @@ export class Internet {
   @Prop({ required: true })
   price: number;
 
-  @Prop()
+  @Prop({ required: true })
   description: string;
 }
 
