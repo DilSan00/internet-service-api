@@ -18,6 +18,8 @@ async function bootstrap() {
     })
   );
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('Internet Service API')
     .setDescription('API for managing internet service providers')
@@ -26,8 +28,6 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
-
-  app.enableCors();
 
   await app.listen(3000);
 }

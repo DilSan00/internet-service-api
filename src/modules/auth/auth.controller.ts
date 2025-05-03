@@ -6,6 +6,7 @@ import { JwtAuthGuard } from './jwt-auth.guard';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { UsersService } from '../users/users.service';
 import { CurrentUser } from 'src/shared/decorators/current-user.decorator';
+import { AdminGuard } from './admin.guard';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -32,7 +33,7 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('me')
   @ApiBearerAuth()
-  async getMe(@CurrentUser() user) {
+  getMe(@CurrentUser() user) {
     return this.usersService.findById(user.userId);
   }
 }

@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, MinLength, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, MinLength, IsString, IsEnum, IsOptional } from 'class-validator';
+import { UserRole } from 'src/modules/users/model/user.enum';
 
 export class RegisterDto {
   @ApiProperty()
@@ -16,4 +17,8 @@ export class RegisterDto {
   @IsNotEmpty({ message: 'Пароль обязателен.' })
   @MinLength(6, { message: 'Пароль должен содержать не менее 6 символов.' })
   password: string;
+
+  @IsOptional()
+  @IsEnum(UserRole)
+  role?: UserRole;
 }
