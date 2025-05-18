@@ -11,15 +11,10 @@ export class CreateApplicationsDto {
   @IsPhoneNumber('KG')
   phone: string;
 
-  @ApiProperty({ example: 'MegaCom' })
+  @ApiProperty({ example: 'Snikers' })
   @IsString()
   @IsNotEmpty()
-  providerName: string;
-
-  @ApiProperty({ example: 'Premium' })
-  @IsString()
-  @IsNotEmpty()
-  type: string;
+  title: string;
 
   @ApiProperty({ example: 199, description: 'Цена в сомах' })
   @IsNumber()

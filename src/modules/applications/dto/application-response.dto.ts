@@ -10,11 +10,8 @@ export class ApplicationResponseDto {
   @ApiProperty({ example: '+996707123456' })
   phone: string;
 
-  @ApiProperty({ example: 'MegaCom' })
-  providerName: string;
-
-  @ApiProperty({ example: 'Premium' })
-  type: string;
+  @ApiProperty({ example: 'Snikers' })
+  title: string;
 
   @ApiProperty({ example: 199, description: 'Цена в сомах' })
   price: number;
