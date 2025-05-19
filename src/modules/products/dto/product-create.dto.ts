@@ -21,13 +21,13 @@ export class ProductCreateDto {
   @IsNotEmpty({ message: 'Поле не должно быть пустым' })
   @Type(() => Number)
   @IsNumber({}, { message: 'Поле должно быть числом' })
-  @Min(0, { message: 'Цена не может быть меньше 0' })
+  // @Min(0, { message: 'Цена не может быть меньше 0' })
   price: number;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'Поле не должно быть пустым' })
   @Type(() => Number)
   @IsNumber({}, { message: 'Поле должно быть числом' })
-  @Min(0, { message: 'Количество не может быть меньше 0' })
+  // @Min(0, { message: 'Количество не может быть меньше 0' })
   quantity: number;
 }
