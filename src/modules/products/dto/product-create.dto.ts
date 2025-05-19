@@ -1,12 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString, Min } from 'class-validator';
 
 export class ProductCreateDto {
-  @ApiProperty()
-  @IsNotEmpty({ message: 'Поле не должно быть пустым' })
-  @IsString({ message: 'Поле должно быть строкой' })
-  image: string;
+  @ApiProperty({ type: 'string', format: 'binary', required: false })
+  @IsOptional()
+  image: any;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'Поле  не должно быть пустым' })
