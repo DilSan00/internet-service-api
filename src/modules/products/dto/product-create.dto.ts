@@ -5,8 +5,8 @@ import { IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
 export class ProductCreateDto {
   @ApiProperty()
   @IsNotEmpty({ message: 'Поле не должно быть пустым' })
-  // @IsString({ message: 'Поле должно быть строкой' })
-  image: File;
+  @IsString({ message: 'Поле должно быть строкой' })
+  image: string;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'Поле  не должно быть пустым' })
