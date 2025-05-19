@@ -4,6 +4,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { ApplicationsModule } from './modules/applications/applications.module';
 import { ProductsModule } from './modules/products/products.module';
+import { CartModule } from './modules/cart/cart.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { ProductsModule } from './modules/products/products.module';
     UsersModule,
     ProductsModule,
     ApplicationsModule,
+    CartModule,
     MongooseModule.forRoot(
       process.env.MONGO_URI ||
         'mongodb+srv://norms777666:smodsmod@cluster0.yvcttep.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'

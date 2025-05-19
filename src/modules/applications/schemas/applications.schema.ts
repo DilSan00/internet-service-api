@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
 @Schema()
 export class Applications {
@@ -9,10 +10,7 @@ export class Applications {
   phone: string;
 
   @Prop({ required: true })
-  providerName: string;
-
-  @Prop({ required: true })
-  type: string;
+  title: string;
 
   @Prop({ required: true })
   price: number;
